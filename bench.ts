@@ -1,5 +1,6 @@
 import { hash as rustWasmHash } from "./blake3-wasm/pkg/blake3_wasm.js";
 import { sha256 } from "https://denopkg.com/chiefbiiko/sha256@v1.0.0/mod.ts";
+import { hash as jsHashV0 } from "./js/latest.ts";
 
 // Share the same input buffer across benchmars.
 const INPUT_BUFFER = new Uint8Array(1024 * 1024);
@@ -40,3 +41,4 @@ function bench(name: string, fn: (array: Uint8Array) => any) {
 
 bench("Sha256", sha256);
 bench("Rust (wasm)", rustWasmHash);
+bench("Js#01", jsHashV0);

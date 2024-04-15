@@ -1,0 +1,5 @@
+blake3-wasm/target
+media
+__pycache__
+.venv
+

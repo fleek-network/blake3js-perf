@@ -6,6 +6,7 @@ import { hash as jsHashV2 } from "./js/v2.ts";
 import { hash as jsHashV3 } from "./js/v3.ts";
 import { hash as jsHashV4 } from "./js/v4.ts";
 import { hash as jsHashV5 } from "./js/v5.ts";
+import { hash as jsHashV6 } from "./js/v6.ts";
 import { hash as latestHash } from "./js/latest.ts";
 
 // Share the same input buffer across benchmars.
@@ -53,4 +54,5 @@ bench("Js#03", jsHashV2);
 bench("Js#04", jsHashV3);
 bench("Js#05", jsHashV4);
 bench("Js#06", jsHashV5);
-bench("Js#07", latestHash);
+bench("Js#07", jsHashV6);
+bench("Js#08", latestHash);

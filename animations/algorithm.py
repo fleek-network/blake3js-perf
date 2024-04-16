@@ -1,4 +1,5 @@
 from manim import *
+from fleek import *
 from manim.camera.moving_camera import MovingCamera
 
 c = 0.1
@@ -8,13 +9,13 @@ class OpeningManim(MovingCameraScene):
         self.camera.frame.save_state()
 
         # Act 1: Get the data
-        title = Text("Get the input").to_corner(UL)
+        title = Title("Get the input").to_corner(UL)
         full_data = Rectangle(width=c*(16*4+8), height=4*c)
         self.play(AddTextLetterByLetter(title), Create(full_data))
         self.wait()
 
         # Act 2: Split the data to chunks.
-        _title = Text("Split to chunks of 1024 Byte").to_corner(UL)
+        _title = Title("Split to chunks of 1024 Byte").to_corner(UL)
         chunk_text_font_size = 12
         chunk1_rect = Rectangle(width=16 * c, height=4 * c).align_to(full_data, LEFT)
         chunk1_text = Text("Chunk #0", font_size=chunk_text_font_size).move_to(chunk1_rect.get_center())
@@ -58,7 +59,7 @@ class OpeningManim(MovingCameraScene):
         )
 
         # Act 4: Transform
-        _title = Text("Compress each chunk").to_corner(UL)
+        _title = Title("Compress each chunk").to_corner(UL)
         hash1_rect = Rectangle(color=YELLOW, width=4*c, height=4*c).next_to(chunk1, DOWN)
         hash1_text = Text("H0", color=YELLOW, font_size=14).move_to(hash1_rect.get_center())
         hash2_rect = Rectangle(color=YELLOW, width=4*c, height=4*c).next_to(chunk2, DOWN)
@@ -165,15 +166,15 @@ class OpeningManim(MovingCameraScene):
         )
 
         # Act 4: Split the tree
-        _title = Text("Form a left-complete binary tree").to_corner(UL)
+        _title = Title("Form a left-complete binary tree").to_corner(UL)
         group15 = Group(chunk1, chunk2, chunk3, chunk4, chunk5)
         group14 = Group(chunk1, chunk2, chunk3, chunk4)
         group12 = Group(chunk1, chunk2)
         group34 = Group(chunk3, chunk4)
         box15 = SurroundingRectangle(group15, color=RED, buff=MED_LARGE_BUFF)
         box14 = SurroundingRectangle(group14, color=BLUE, buff=MED_SMALL_BUFF)
-        box12 = SurroundingRectangle(group12, color=PURPLE, buff=SMALL_BUFF)
-        box34 = SurroundingRectangle(group34, color=PURPLE, buff=SMALL_BUFF)
+        box12 = SurroundingRectangle(group12, color=GREEN, buff=SMALL_BUFF)
+        box34 = SurroundingRectangle(group34, color=GREEN, buff=SMALL_BUFF)
         self.play(
             Transform(title, _title),
             Create(box15),
@@ -183,8 +184,8 @@ class OpeningManim(MovingCameraScene):
         )
 
         # Act 4: Create the tree nodes
-        _box12 = Rectangle(width=4*c, height=4*c, color=PURPLE).next_to(box12, 2 * UP)
-        _box34 = Rectangle(width=4*c, height=4*c, color=PURPLE).next_to(box34, 2 * UP)
+        _box12 = Rectangle(width=4*c, height=4*c, color=GREEN).next_to(box12, 2 * UP)
+        _box34 = Rectangle(width=4*c, height=4*c, color=GREEN).next_to(box34, 2 * UP)
         _box14 = Rectangle(width=4*c, height=4*c, color=BLUE).next_to(Group(_box12, _box34), 2 * UP)
         _chunk5 = chunk5.copy().shift(2 * UP)
         _box15 = Rectangle(width=4*c, height=4*c, color=RED).next_to(Group(_box14, _chunk5), 2 * UP)

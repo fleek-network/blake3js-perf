@@ -1,4 +1,5 @@
 from manim import *
+from fleek import *
 from manim.camera.moving_camera import MovingCamera
 
 class OpeningManim(MovingCameraScene):

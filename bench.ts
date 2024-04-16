@@ -3,6 +3,7 @@ import { sha256 } from "https://denopkg.com/chiefbiiko/sha256@v1.0.0/mod.ts";
 import { hash as jsHashV0 } from "./js/v0.ts";
 import { hash as jsHashV1 } from "./js/v1.ts";
 import { hash as jsHashV2 } from "./js/v2.ts";
+import { hash as jsHashV3 } from "./js/v3.ts";
 import { hash as latestHash } from "./js/latest.ts";
 
 // Share the same input buffer across benchmars.
@@ -47,4 +48,5 @@ bench("Rust (wasm)", rustWasmHash);
 bench("Js#01", jsHashV0);
 bench("Js#02", jsHashV1);
 bench("Js#03", jsHashV2);
-bench("Js#04", latestHash);
+bench("Js#04", jsHashV3);
+bench("Js#05", latestHash);

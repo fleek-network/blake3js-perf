@@ -198,7 +198,28 @@ class OpeningManim(MovingCameraScene):
             chunk5.animate.shift(2 * UP),
         )
 
+        # Act 5: The hash
         self.wait()
+        _title = Title("Return the root").to_corner(UL)
+        self.play(
+            Transform(title, _title),
+            box15.animate.move_to(ORIGIN).scale(2),
+            Uncreate(hash1_rect), Unwrite(hash1_text),
+            Uncreate(hash2_rect), Unwrite(hash2_text),
+            Uncreate(hash3_rect), Unwrite(hash3_text),
+            Uncreate(hash4_rect), Unwrite(hash4_text),
+            Uncreate(hash5_rect), Unwrite(hash5_text),
+            Uncreate(box12),
+            Uncreate(box34),
+            Uncreate(box14),
+        )
+
+        hash_text = Text("Hash = ", font_size=14).next_to(box15, LEFT)
+        self.play(
+            AddTextLetterByLetter(hash_text),
+        )
+
+        self.wait(2)
 
     # A little hack to foce the type of camera so pyright could play nice.
     @property
